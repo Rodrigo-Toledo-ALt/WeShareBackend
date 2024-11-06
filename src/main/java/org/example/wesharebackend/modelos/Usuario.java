@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "usuario", schema = "WeShare", catalog = "postgres")
+@Table(name = "usuario", schema = "weshare", catalog = "postgres")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -36,13 +36,17 @@ public class Usuario {
 
     //relación tabla usuario_grupo
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, targetEntity = Grupo.class)
-    @JoinTable(name = "usuario_grupo", schema = "WeShare", catalog = "postgres",
+    @JoinTable(name = "grupo_usuario", schema = "WeShare", catalog = "postgres",
             joinColumns = {@JoinColumn(name = "id_usuario", nullable = false)} ,
             inverseJoinColumns ={@JoinColumn(name = "id_grupo", nullable = false)})
     private Set<Grupo> grupos = new HashSet<>(0);
 
-
-
+    //relación amigo
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, targetEntity = Usuario.class)
+    @JoinTable(name = "amigo", schema = "WeShare", catalog = "postgres",
+            joinColumns = {@JoinColumn(name = "usuario_id", nullable = false)} ,
+            inverseJoinColumns ={@JoinColumn(name = "amigo_id", nullable = false)})
+    private Set<Usuario> amigos = new HashSet<>(0);
 
 
 }

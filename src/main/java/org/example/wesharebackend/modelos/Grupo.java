@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "grupo", schema = "WeShare", catalog = "postgres")
+@Table(name = "grupo", schema = "weshare", catalog = "postgres")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,7 +18,7 @@ public class Grupo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "nombre", nullable = false)
@@ -27,7 +27,7 @@ public class Grupo {
     @Column(name = "num_integrantes", nullable = false)
     private Integer numIntegrantes;
 
-    @Column(name = "fecha_creacion", nullable = false)
+    @Column(name = "fecha_grupo", nullable = false)
     private LocalDate fechaCreacion;
 
     @OneToMany(targetEntity = Pago.class, mappedBy = "grupo")

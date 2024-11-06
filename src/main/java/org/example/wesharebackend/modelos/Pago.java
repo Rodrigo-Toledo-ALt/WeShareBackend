@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table (name = "pago", schema = "WeShare", catalog = "postgres")
+@Table (name = "pago", schema = "weshare", catalog = "postgres")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,7 +24,7 @@ public class Pago {
     @Column(name = "descripcion", nullable = true)
     private String descripcion;
 
-    @Column (name = "fecha", nullable = false)
+    @Column (name = "fecha_gasto", nullable = false)
     private String fecha;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
