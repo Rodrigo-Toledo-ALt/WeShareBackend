@@ -3,6 +3,8 @@ package org.example.wesharebackend.modelos;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table (name = "pago", schema = "weshare", catalog = "postgres")
 @Getter
@@ -25,7 +27,7 @@ public class Pago {
     private String descripcion;
 
     @Column (name = "fecha_gasto", nullable = false)
-    private String fecha;
+    private LocalDate fecha;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_usuario")

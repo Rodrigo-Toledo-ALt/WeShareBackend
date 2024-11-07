@@ -30,6 +30,8 @@ public class GrupoService {
 
         grupoRepository.save(grupo);
 
+        grupoDTO.setId(grupo.getId());
+
         return grupoDTO;
     }
 
